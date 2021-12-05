@@ -4,7 +4,7 @@ from random import randint
 app = Flask(__name__)
 
 @app.route("/race", methods=["GET"])
-def ch_class():
+def race():
     races = ["Human","Dwarf","Elf","Orc","Half-Elf","Dragonborn"]
     random = races[randint(0,5)]
     return Response(random, mimetype="text/plain")
