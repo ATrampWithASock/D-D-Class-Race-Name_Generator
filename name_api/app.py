@@ -3,9 +3,9 @@ from random import randint
 
 app = Flask(__name__)
 
-@app.route("/name", methods=["GET","POST"])
-def name():
-    race = request.race.decode("utf-8")
+@app.route("/firstname", methods=["POST"])
+def firstname():
+    race = request.data.decode("utf-8")
     if race == "Human":
         firstname = "Stor"
     elif race == "Dwarf":
@@ -22,7 +22,9 @@ def name():
         firstname = "This was not a selectable race"
     return Response(firstname, mimetype='text/plain')
 
-    ch_class = request.ch_class.decode("utf-8")
+@app.route("/surname", methods=["POST"])
+def surname():
+    ch_class = request.data.decode("utf-8")
     if ch_class == "ranger":
         surname = "Hornraven"
     elif ch_class == "fighter":
@@ -32,7 +34,7 @@ def name():
     elif ch_class == "druid":
         surname = "Hallowhawk"
     elif ch_class == "barbarian":
-        surname == "Shieldshatterer"
+        surname = "Shieldshatterer"
     elif ch_class == "warlock":
         surname = "Darkspawn"
     else:
