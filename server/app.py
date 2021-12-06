@@ -9,7 +9,7 @@ def character():
     race = requests.get("http://raceapi:5000/race")
     firstname = requests.post("http://nameapi:5000/name", race=race.text)
     surname = requests.post("http://nameapi:5000/name", ch_class=ch_class.text)
-    return render_template("homepage.html", ch_class=ch_class.text, race=race.text, name=name.txt)
+    return render_template("homepage.html", ch_class=ch_class.text, race=race.text, firstname=firstnamename.txt, surname-surname.txt)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
