@@ -6,6 +6,7 @@ A Repository containing my files and commits for a school database for my charac
 2. [Risk Assessment](#riskassess)
 3. [Jira Reports](#jirareports)
 4. [Problems](#problems)
+5. [Docker](#docker)
 
 
 ## Ansible <a name="ansible"></a>
@@ -91,4 +92,9 @@ My last error whcih ultimately broke me was with docker swarm. I tried for hours
 ![docker swarm error](/readme_images/testing5.png)
 
 Here is the image for proof of this.
+
+
+## Docker <a name="docker"></a>
+
+I used docker throughout my application, saving my images to dockerhub over Nexus. I chose dockerhub over nexus because it was easier to use and for this project it did not matter that dockerhub is open source. Were I creating a project that required more security or with images being created that should not be accessible to the public I would have used Nexus.
 
