@@ -6,21 +6,35 @@ A Repository containing my files and commits for a school database for my charac
 2. [Risk Assessment](#riskassess)
 3. [Jira Reports](#jirareports)
 4. [Problems](#problems)
-5. [Testing](#testing)
 
 
 ## Ansible <a name="ansible"></a>
 
 ![Ansible starting](/readme_images/ansible1.png)
+
 In this image I am running the code that will start the ansible process. Within the Ansible vm I have connected it via SSH keys to the three vms I wish to configure. I have done so in a way that I will not have to install docker to two of my vms and nginx on another.
+
+
 ![Ansible running](/readme_images/ansible2.png)
+
+
 ![Ansible finished](/readme_images/ansible3.png)
+
+
 ![proof of nginx on load balancer vm](/readme_images/ansible4.png)
+
 This is an image on my load balancer vm showing that nginx was installed after the ansible code had finished running.
+
+
 ![proof of docker on docker manager vm](/readme_images/ansible5.png)
+
 This is an image of my docker manger, showing that docker is installed
+
+
 ![proof of docker on docker worker vm](/readme_images/ansible6.png)
+
 Lastley this is an image of my docker worker showing that docker is installed.
+
 
 The use of ansible greatly cut down the time and repitiveness of setting up each of these vms.
 
@@ -47,6 +61,7 @@ Some risks I have taken into consideration when designing this project are:
 Above is one of the charts created by jira that represents one of my burndown reports from a sprint. Visually it is not very useful as I was setting a single epic per sprint really which just shows I finished it in time rather than having a stepped approach to finishing. This is something I should consider for the future.
 
 
+
 ## Problems <a name="problems"></a>
 
 I ended up running into a couple of problems throughout the course of this project.
@@ -55,17 +70,25 @@ I ended up running into a couple of problems throughout the course of this proje
 I of course created tests for each of my functions within each app and API. This however came with some issues. I had errors that I could not fix that would not allow me to run the tests. I tried for hours to fix these and did so to no avail.
 
 ![tests of the server](/readme_images/testing1.png)
+
 Here are my tests for the server. I used get.mock and post.mock to simulate values that it wouldn't be able to draw from elsewhere in the program during testing. As far as I can tell they are all written correctly however 
 
-###### The Change
-I then decided that the user should instead input the marks information manually, this however also ran into some syntax issues that after a while of checking I managed to reslove. For some reason, and only under this html form the hidden_tag() part which is usually written as such needed to have the brackets removed. Even though on two other html forms I had the exact same code and that wasn't an issue. This however then created another issue. That once again, code that was working in exactly the same way on other html files was not working on this one.
 
-###### Conclusion
-I brought these issues before Victoria again and once again she could find no immediate fault in my code and could not think as to what the issues could even be. So under her advice I abandoned the marks and the relational side of this project and focused more on implementing a more interesting CRUD table out of my working student one. Which is when I decided to flesh out the prexisting table into what it finally became.
+![tests of the basic APIs](/readme_images/testing3.png)
+
+Here you can see my tests for the class_api app. Once again I had the same issues as previously mentioned. saying it could not find the module flask, when it was installed in my current venv. In this image I have written tests to check that it gets a server response of 200, meaning it has reached the webpage without any errors.
 
 
-## Testing <a name="testing"><a/>
+![tests of the name_api](/readme_images/testing4.png)
 
-![Test Results](/readme_images/Test_Results.PNG)
+Here are my tests for the name_api application. Once again I had identical errors to the previous tests, within these tests I wrote tests to check the response to each of the sent information from both the race and class lists to ensure that the right result was gained.
 
-Looking at the test results above you can see there are two failed tests. I do not know why they have failed. As far as I am aware they are written correctly and I know the actual code works as I have used the program. The coverage is also quite low on my routes.py folder. This is because it still contains all of the routes in relation to the marks and the marks tables. I did not write the tests as I am not using them, however I could not remove the code as when I did so it broke the application.
+
+###### Docker Swarm
+
+My last error whcih ultimately broke me was with docker swarm. I tried for hours once again to fix this and ultmiately failed, resulting in the inability to deploy my application. I created a swarm that generated 3 replicas of each of the apps and spread them across the manager and the worker. It did so perfectly fine. However it would create the server replicas but immediately close them. Resulting in the inability to access the application at all.
+
+![docker swarm error](/readme_images/testing5.png)
+
+Here is the image for proof of this.
+
